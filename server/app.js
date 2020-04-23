@@ -40,27 +40,3 @@ module.exports = app;
 //   .get("/api/cows")
 //   .then((res) => console.log(res.data))
 //   .catch((err) => console.log(err));
-
-// app.post("/api/cows", (req, res) => {
-//   return create({
-//     table: req.body.table,
-//     name: req.body.name,
-//     description: req.body.description,
-//   })
-//     .then((data) => {
-//       res.status(201).send(data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-// app.get("/api/cows", (req, res) => {
-//   return executeQuery(req.body.query)
-//     .then((data) => {
-//       res.status(200).send(data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });

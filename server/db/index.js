@@ -39,7 +39,9 @@ const Cow = sequelize.define("cowTest", {
 // Q: If you want Sequelize to automatically create the table (or modify it as needed)
 // according to your model definition, you can use the sync method, as follows:
 // Note: using `force: true` will drop the table if it already exists
-sequelize.sync({ force: true });
+// sequelize.sync({ force: true });
+
+sequelize.sync();
 
 // Q: when and why?
 // Drop all tables

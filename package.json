@@ -16,6 +16,7 @@
     "axios": "^0.19.2",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
+    "bulma": "^0.8.2",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
     "mysql": "^2.18.1",
