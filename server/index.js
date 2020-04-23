@@ -1,5 +1,5 @@
 const app = require("./app.js");
-const db = require("./db/indexSequelize.js");
+const db = require("./db/index.js");
 
 const port = 3000;
 app.listen(port, () => {

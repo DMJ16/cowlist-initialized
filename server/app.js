@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const parser = require("body-parser");
-const Cow = require("./db/indexSequelize.js");
+const Cow = require("./db/index.js");
 const Sequelize = require("sequelize");
 // const axios = require("axios");
 // const getAll = require("./helpers/index.js");
