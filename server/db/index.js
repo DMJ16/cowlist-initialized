@@ -4,9 +4,11 @@ const Sequelize = require("sequelize");
 const database = "cowsDB";
 
 // initialize connection to database
-const sequelize = new Sequelize(database, "root", "", {
-  host: "localhost",
+const sequelize = new Sequelize({
+  database: database,
+  username: "root",
   password: "",
+  host: "localhost",
   dialect: "mysql",
 });
 

@@ -10,6 +10,7 @@ const Sequelize = require("sequelize");
 app.use(express.static("./client/dist"));
 app.use(parser.json());
 
+// **refactor methods using async/await**
 app.post("/api/cows", (req, res) => {
   return Cow.create({
     name: req.body.name,
