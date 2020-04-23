@@ -1,9 +1,65 @@
 const express = require("express");
 const app = express();
+const parser = require("body-parser");
+const Cow = require("./db/indexSequelize.js");
+const Sequelize = require("sequelize");
+// const axios = require("axios");
+// const getAll = require("./helpers/index.js");
 
 // what is this doing exactly?
 app.use(express.static("./client/dist"));
+app.use(parser.json());
 
-app.get("/", (req, res) => res.send("Hello World!"));
+app.post("/api/cows", (req, res) => {
+  return Cow.create({
+    name: req.body.name,
+    description: req.body.description,
+  })
+    .then((data) => {
+      res.status(201).send(data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
+app.get("/api/cows", (req, res) => {
+  return Cow.findAll({
+    attributes: ["name", "description"],
+  })
+    .then((data) => res.send(data))
+    .catch((err) => console.error(err));
+});
 
 module.exports = app;
+
+// axios.defaults.baseURL = "http://localhost:3000/";
+
+// axios
+//   .get("/api/cows")
+//   .then((res) => console.log(res.data))
+//   .catch((err) => console.log(err));
+
+// app.post("/api/cows", (req, res) => {
+//   return create({
+//     table: req.body.table,
+//     name: req.body.name,
+//     description: req.body.description,
+//   })
+//     .then((data) => {
+//       res.status(201).send(data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+
+// app.get("/api/cows", (req, res) => {
+//   return executeQuery(req.body.query)
+//     .then((data) => {
+//       res.status(200).send(data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
