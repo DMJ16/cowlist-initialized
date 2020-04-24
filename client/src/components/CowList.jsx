@@ -5,7 +5,7 @@ import CowListEntry from "./CowListEntry.jsx";
 
 const CowList = ({ cows, onClick, clickedCow }) => (
   <div>
-    <h4>Cows</h4>
+    <h3>Cow List</h3>
     <div className="cow-list">
       {cows.map((cow) => (
         <CowListEntry

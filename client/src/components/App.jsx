@@ -1,17 +1,11 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-
-// AXIOS
-import { get } from "lodash";
+import React from "react";
+import { get, create } from "lodash";
 import axios from "axios";
-import API from "../util/utils.js";
 
 // COMPONENTS
 import CowList from "./CowList.jsx";
-import CowListEntry from "./CowListEntry.jsx";
 import Description from "./Description.jsx";
 import Form from "./Form.jsx";
-import Button from "./Button.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -22,28 +16,39 @@ class App extends React.Component {
       wasCowClicked: false,
     };
     this.onClick = this.onClick.bind(this);
-    // Q: this.getCows = this.getCows.bind(this); ??
+    this.createCow = this.createCow.bind(this);
   }
 
-  // Q: life cycle methods
+  // Q: LIFE CYCLE METHODS
   componentDidMount() {
     this.getCows();
   }
 
+  // REQUESTS
   getCows() {
     return axios
       .get("/api/cows")
       .then(({ data }) => {
-        this.setState({ cows: data, clickedCow: data.name });
+        this.setState({ cows: data });
       })
       .catch((err) => {
         console.error(err);
       });
   }
 
-  // make axios post request
-  //   handleFormSubmit() {}
+  createCow(name, description) {
+    return axios
+      .post("/api/cows", {
+        name: name,
+        description: description,
+      })
+      .then(() => {
+        return this.getCows();
+      })
+      .catch((err) => console.error(err));
+  }
 
+  // EVENT HANDLERS
   onClick(cow) {
     this.setState({
       clickedCow: cow,
@@ -55,9 +60,8 @@ class App extends React.Component {
     if (this.state.wasCowClicked) {
       return (
         <div>
-          <h1>Cow List</h1>
           <Description clickedCow={this.state.clickedCow} />
-          {/** search */} {/** button */}
+          <Form createCow={this.createCow} />
           <CowList
             cows={this.state.cows}
             onClick={this.onClick}
@@ -69,8 +73,7 @@ class App extends React.Component {
       return (
         <div>
           <h1>Cow List</h1>
-          {/**<Description clickedCow={this.state.clickedCow} />*/}
-          {/** search */} {/** button */}
+          <Form createCow={this.createCow} />
           <CowList
             cows={this.state.cows}
             onClick={this.onClick}
