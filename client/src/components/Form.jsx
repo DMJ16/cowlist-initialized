@@ -33,9 +33,7 @@ const Form = ({ createCow }) => {
               />
             </label>
           </li>
-          <button type="submit" value={"Submit"}>
-            MAKE A COW NOW
-          </button>
+          <button type="submit">MAKE A COW NOW</button>
         </ul>
       </form>
     </div>

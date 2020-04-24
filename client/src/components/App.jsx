@@ -62,11 +62,7 @@ class App extends React.Component {
         <div>
           <Description clickedCow={this.state.clickedCow} />
           <Form createCow={this.createCow} />
-          <CowList
-            cows={this.state.cows}
-            onClick={this.onClick}
-            clickedCow={this.state.clickedCow}
-          />
+          <CowList cows={this.state.cows} onClick={this.onClick} />
         </div>
       );
     } else {
@@ -74,11 +70,7 @@ class App extends React.Component {
         <div>
           <h1>Cow List</h1>
           <Form createCow={this.createCow} />
-          <CowList
-            cows={this.state.cows}
-            onClick={this.onClick}
-            clickedCow={this.state.clickedCow}
-          />
+          <CowList cows={this.state.cows} onClick={this.onClick} />
         </div>
       );
     }
